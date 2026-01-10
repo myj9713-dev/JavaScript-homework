@@ -7,12 +7,12 @@ function generateWelComeMessage(name, grade) {
   if (grade === 'VIP') {
     return '🌟 VIP ' + name + '님, 특별한 혜택이 준비되어 있습니다!'
   }
-// 일반회원인 경우
+  // 일반회원인 경우
   if (grade === '일반') {
     return '안녕하세요, ' + name + '님! 즐거운 쇼핑 되세요.'
   }
   // VIP, 일반에 해당하지 않는 모든 경우에 출력되는 값
-    return '안녕하세요, ' + name + '님!'
+  return '안녕하세요, ' + name + '님!'
 }
 
 let vipUser = generateWelComeMessage('철수', 'VIP')
@@ -24,6 +24,10 @@ console.log(vipUser)
 console.log(regularUser)
 console.log(userNoGrade) 
 console.log(user)
+
+
+// 테스트 코드 작성(타입확인, 재할당 가능 여부확인)
+
 
 // ---------------------------------------------------------------------------------------------
 // 2. 배송비 계산
@@ -51,6 +55,9 @@ console.log(calculateDeliveryFee(60_000, '제주'))
 console.log(calculateDeliveryFee(0, '서울'))
 console.log(calculateDeliveryFee(10_000, ''))
 
+
+// 테스트 코드 작성(타입확인, 재할당 가능 여부확인)
+
 // ---------------------------------------------------------------------------------------------
 // 3. 비밀번호 유효성 검사
 // 비밀번호 문자열을 입력받아 유효성 검사를 수행하는 함수를 작성합니다.
@@ -69,6 +76,9 @@ const checkPasswordValue = (password) => {
 console.log(checkPasswordValue('12345'))
 console.log(checkPasswordValue('password12345'))
 console.log(checkPasswordValue('123456789112345678911'))
+
+
+// 테스트 코드 작성(타입확인, 재할당 가능 여부확인)
 
 // ---------------------------------------------------------------------------------------------
 // 4. 포인트 적립 계산
@@ -97,7 +107,34 @@ console.log(calculateRewardPoints(100_000, '일반'))
 console.log(calculateRewardPoints(100_000, '신규'))
 
 
+// 테스트 코드 작성(타입확인, 재할당 가능 여부확인)
+
 // ---------------------------------------------------------------------------------------------
 // 5. 영화 티켓 가격 계산
 // 영화 정보와 관람 인원을 입력받아 총 결제 금액을 계산하는 함수를 작성합니다.
+const calculateMovieFee = function (movieType, isEarlyBird, count) {
+  // 영화 종류에 따라 변하는 가격을 임시로 담아두기 위해 선언
+  let basePrice = 0
+  if (movieType === '일반') {
+  basePrice = 14_000
+}
+if (movieType === '3D') {
+  basePrice = 17_000
+}
+if (movieType === 'IMAX') {
+  basePrice = 20_000
+}
+// 조조 할인 적용(true일 경우 20%할인)
+if (isEarlyBird === true) {
+  basePrice *= 0.8
+}
+return basePrice * count
+}
+
+// 3D영화, 조조 상영(10시 이전 상영), 2명 관람 -> 17000 * 0.8 * 2 = 27200
+console.log(calculateMovieFee('3D', true, 2))
+
+// 일반영화, 일반 시간(10시 이후 상영), 3명 관람 -> 14000 * 3 = 42000
+console.log(calculateMovieFee('일반', false, 3))
+
 // 테스트 코드 작성(타입확인, 재할당 가능 여부확인)

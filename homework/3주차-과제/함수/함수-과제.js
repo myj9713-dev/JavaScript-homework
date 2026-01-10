@@ -26,7 +26,28 @@ console.log(user)
 // ---------------------------------------------------------------------------------------------
 // 2. 배송비 계산
 // 주문 금액과 배송 지역을 입력받아 배송비를 계산하는 함수를 작성합니다.
+const calculateDeliveryFee = function (amount, region) {
+  // 주문 금액이 0원 이하인 경우 (0 반환)
+  if (amount <= 0) {
+    return 0
+  }
+  // 주문 금액이 50,000원 이상인 경우 (무료 배송)
+  if (amount>= 50_000) {
+    return 0
+  }
+  // 제주/도서 지역인 경우(||연산자는 'or'을 의미): 기본 3000원 + 추가 3000원 = 6000원
+  if (region === '제주' || region === '도서') {
+    return 6_000
+  }
+  // 그 외 일반 지역인 경우(기본 배송비 3,000원), 빈 문자열도 여기에 포함
+  return 3000
+}
 
+console.log(calculateDeliveryFee(10_000, '서울'))
+console.log(calculateDeliveryFee(10_000, '제주'))
+console.log(calculateDeliveryFee(60_000, '제주'))
+console.log(calculateDeliveryFee(0, '서울'))
+console.log(calculateDeliveryFee(10_000, ''))
 
 // ---------------------------------------------------------------------------------------------
 // 3. 비밀번호 유효성 검사

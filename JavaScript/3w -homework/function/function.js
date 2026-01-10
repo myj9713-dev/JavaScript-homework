@@ -73,8 +73,28 @@ console.log(checkPasswordValue('123456789112345678911'))
 // ---------------------------------------------------------------------------------------------
 // 4. 포인트 적립 계산
 // 결제 금액과 회원 등급을 입력받아 적립될 포인트를 계산하는 함수를 작성합니다.
+function calculateRewardPoints(amount, grade) {
+  // VIP 등급: 5% 적립
+  if (grade === 'VIP'){
+    return amount * 0.05
+  }
+  // Gold 등급: 3% 적립
+  if (grade === 'GOLD') {
+    return amount * 0.03
+  }
+// Silver 등급: 1% 적립
+  if (grade === 'SILVER') {
+    return amount * 0.01
+  }
+  // 일반 등급: 0.5% 적립(위 조건들에 해당하지 않는 경우 모두 일반으로 처리)
+  return amount * 0.005
+}
 
-
+console.log(calculateRewardPoints(100_000, 'VIP'))
+console.log(calculateRewardPoints(100_000, 'GOLD'))
+console.log(calculateRewardPoints(100_000, 'SILVER'))
+console.log(calculateRewardPoints(100_000, '일반'))
+console.log(calculateRewardPoints(100_000, '신규'))
 
 
 // ---------------------------------------------------------------------------------------------

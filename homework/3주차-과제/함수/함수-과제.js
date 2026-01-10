@@ -2,21 +2,23 @@
 // ---------------------------------------------------------------------------------------------
 // 1. 환영 메시지 생성
 // 회원 등급과 이름을 입력받아 맞춤형 환영 메시지를 출력하는 함수를 작성합니다.
-function generate_welCome_Message(name, grade) {
+function generateWelComeMessage(name, grade) {
+  // VIP회원인 경우
   if (grade === 'VIP') {
     return '🌟 VIP ' + name + '님, 특별한 혜택이 준비되어 있습니다!'
   }
-  else if (grade === '일반') {
+// 일반회원인 경우
+  if (grade === '일반') {
     return '안녕하세요, ' + name + '님! 즐거운 쇼핑 되세요.'
   }
   // VIP, 일반에 해당하지 않는 모든 경우에 출력되는 값
     return '안녕하세요, ' + name + '님!'
 }
 
-let vipUser = generate_welCome_Message('철수', 'VIP')
-let regularUser = generate_welCome_Message('수지', '일반')
-let userNoGrade = generate_welCome_Message('짱구') /* 등급이 없을 때 */
-let user = generate_welCome_Message('맹구', '비아피') /* 등급 위치에 오타나 잘못된 값을 입력 */
+let vipUser = generateWelComeMessage('철수', 'VIP')
+let regularUser = generateWelComeMessage('수지', '일반')
+let userNoGrade = generateWelComeMessage('짱구') /* 등급이 없을 때 */
+let user = generateWelComeMessage('맹구', '비아피') /* 등급 위치에 오타나 잘못된 값을 입력 */
 
 console.log(vipUser)
 console.log(regularUser)

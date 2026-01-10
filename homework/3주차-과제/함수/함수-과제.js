@@ -52,8 +52,21 @@ console.log(calculateDeliveryFee(10_000, ''))
 // ---------------------------------------------------------------------------------------------
 // 3. 비밀번호 유효성 검사
 // 비밀번호 문자열을 입력받아 유효성 검사를 수행하는 함수를 작성합니다.
+const checkPasswordValue = (password) => {
+  // 비밀번호의 길이를 확인
+  const length = password.length
+  
+  // 8자 이상 (&&연산자) 20자 이하인 경우 true
+  if (length >= 8 && length <= 20) {
+    return true
+  }
+  // 그 외는 전부 false
+  return false
+}
 
-
+console.log(checkPasswordValue('12345'))
+console.log(checkPasswordValue('password12345'))
+console.log(checkPasswordValue('123456789112345678911'))
 
 // ---------------------------------------------------------------------------------------------
 // 4. 포인트 적립 계산

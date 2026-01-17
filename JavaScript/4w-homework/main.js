@@ -1,8 +1,12 @@
 // 요소 선택
 const cardList = document.querySelector('.card-list')
+// console.log(cardList)
 const btnPrev = document.querySelector('.btn-prev')
+// console.log(btnPrev)
 const btnNext = document.querySelector('.btn-next')
+// console.log(btnNext)
 const currentNumber = document.querySelector('.current')
+// console.log(currentNumber)
 
 // 페이지 상태 관리
 let currentIndex = 0 // 자바스크립트는 0부터 시작
@@ -55,6 +59,8 @@ function updateCarousel() {
   // 2. 적용: 계산된 px 수치만큼 기차(cardList)를 왼쪽으로 밉니다.
   cardList.style.transform = "translateX(-" + moveDistance + "px)"
   
+  // 템플릿 리터럴 방식: 백틱( ` )과 ${ }를 사용합니다.
+  // cardList.style.transform = `translateX(-${moveDistance}px)`;
   
   // 공통 UI 업데이트
   currentNumber.textContent = currentIndex + 1

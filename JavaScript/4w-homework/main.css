@@ -1,4 +1,6 @@
+/* 전체 레이아웃*/
 .game-carousel {
+  display: block;
   width: 384px;
   background-color: #fff;
   border: 1px solid #000;
@@ -6,8 +8,14 @@
   margin: 0 auto;
   padding: 24px;
   box-sizing: border-box;
+  overflow: visible;
 }
 
+.game-carousel .active {
+  display: block;
+}
+
+/* 상단 헤더 */
 .title-link-group {
   display: inline-flex; 
   align-items: center;
@@ -48,15 +56,33 @@
   flex-shrink: 0;
 }
 
+
+/* 카드 컨테이너 */
+.carousel-container {
+  overflow: hidden; /* 영역 밖 카드 숨김 */
+  position: relative;
+  width: 336px;
+  padding: 4px; /* 파란 테두리가 그려질 여유 공간 */
+  margin: 0 auto;
+}
+
+/* [방식 1] .style 속성을 위한 기본 설정 */
 .card-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow: visible;
+ width: max-content;
+ transition: none; /* 전환시 애니메이션 제거 */
+ flex-wrap: nowrap;
 }
+
+/* [방식 2] classList 사용을 위한 전용 클래스들 */
+.card-list.is-page-1 { transform: translateX(0); }
+.card-list.is-page-2 { transform: translateX(-100%); }
+.card-list.is-page-3 { transform: translateX(-200%); }
 
 .card-item {
   width: 160px;
@@ -69,6 +95,7 @@
   color: inherit;
   border: 2px solid transparent;
   border-radius: 16px;  
+  margin: -1px;
 }
 
 .card-link:focus-visible {
@@ -105,15 +132,18 @@ border-color: #2049DF;
   object-fit: contain;
   z-index: 2;
   border-radius: 8px;
+  bottom: 0;
 
   transition: transform 0.3s ease-out;
   transform-origin: bottom;
 }
 
 .card-item:hover .character-img {
-  transform: translateY(-8px) scale(1.023);
+  transform: translateY(-1px) scale(1.03);
 }
 
+
+/* 카드 하단 텍스트 정보 */
 .info {
   display: flex;
   flex-direction: column;
@@ -153,6 +183,8 @@ border-color: #2049DF;
   margin-top: 2px;
 }
 
+
+/* 하단 컨트롤러(좌우, 버튼) */
 .carousel-controls {
   display: flex;
   align-items: center;

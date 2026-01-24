@@ -25,10 +25,7 @@ tabButtons.forEach((button) => {
     if (targetPanel) {
       targetPanel.classList.add('tab-panel--active')
     }
-
-    // 대시보드 펼치기
-    dashboard.classList.add('is-open')
     
-    console.log('Active Panel:', targetId)
+    // console.log('Active Panel:', targetId)
   })
 })
